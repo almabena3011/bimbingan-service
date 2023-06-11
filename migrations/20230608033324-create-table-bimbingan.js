@@ -3,14 +3,14 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('proposals', {
+    await queryInterface.createTable('bimbingan', {
       id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
       },
-      mahasiswaId: {
+      mahasiswa_mbkm_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
@@ -18,7 +18,15 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-
+      laporan_akhir_path: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
+      isBimbinganFinished: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
+      },
       createdAt: {
         type: Sequelize.DATE,
         allowNull: false
@@ -31,11 +39,6 @@ module.exports = {
   },
 
   async down(queryInterface, Sequelize) {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
+    await queryInterface.dropTable('bimbingan');
   }
 };
