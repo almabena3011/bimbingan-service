@@ -7,6 +7,7 @@ const cors = require('cors');
 
 var indexRouter = require('./routes/index');
 var bimbinganRouter = require('./routes/bimbingan');
+var progressRouter = require('./routes/progress');
 
 var app = express();
 
@@ -20,5 +21,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/bimbingan', bimbinganRouter);
+app.use('/progress', progressRouter);
 
 module.exports = app;

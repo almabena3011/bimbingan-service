@@ -18,6 +18,10 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
+      batchId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
       laporan_akhir_path: {
         type: Sequelize.TEXT,
         allowNull: true,

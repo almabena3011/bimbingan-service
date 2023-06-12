@@ -23,6 +23,10 @@ module.exports = (sequelize) => {
                 type: DataTypes.INTEGER,
                 allowNull: false,
             },
+            batchId: {
+                type: Sequelize.INTEGER,
+                allowNull: false,
+            },
             laporan_akhir_path: {
                 type: DataTypes.TEXT,
                 allowNull: true,
