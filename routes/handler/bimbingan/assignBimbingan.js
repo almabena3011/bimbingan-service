@@ -20,9 +20,9 @@ const schema = {
 };
 
 module.exports = async (req, res) => {
-    let { mahasiswa_mbkm_id, dosenId, batchId } = req.body;
-    mahasiswa_mbkm_id = parseInt(mahasiswa_mbkm_id, 10);
-    dosenId = parseInt(dosenId, 10);
+    req.body.mahasiswa_mbkm_id = parseInt(req.body.mahasiswa_mbkm_id);
+    req.body.dosenId = parseInt(req.body.dosenId);
+    const { mahasiswa_mbkm_id, dosenId } = req.body;
 
     const validationResponse = v.validate({ mahasiswa_mbkm_id, dosenId }, schema);
     if (validationResponse !== true) {
