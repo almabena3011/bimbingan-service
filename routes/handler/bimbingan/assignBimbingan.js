@@ -1,7 +1,7 @@
 const { Bimbingan, ProgressMingguan } = require('../../../models');
 const Validator = require('fastest-validator');
 const v = new Validator();
-const { getMahasiswaMBKMById } = require('../AdministrasiService');
+const { getMahasiswaMBKMById, giveStatusTrue } = require('../AdministrasiService');
 
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 const ONE_WEEK_MS = 7 * ONE_DAY_MS;
@@ -67,13 +67,15 @@ module.exports = async (req, res) => {
             currentStartWeekDate = new Date(currentStartWeekDate.getTime() + ONE_WEEK_MS);
         }
 
-        // All processes finished successfully
+        const _ = await giveStatusTrue(mahasiswa_mbkm_id);
+
         return res.status(200).json({
             status: 'success',
             message: 'Bimbingan berhasil dibuat'
         });
 
     } catch (error) {
+        console.log(error.message);
         const statusCode = error.message === 'Mahasiswa MBKM not found' ? 404 : error.message === 'User service is not available' ? 503 : 500;
         return res.status(statusCode).json({ error: error.message });
     }

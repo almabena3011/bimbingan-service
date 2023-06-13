@@ -2,7 +2,14 @@ const { Bimbingan } = require('../../../models');
 
 module.exports = async (req, res) => {
     try {
-        const bimbingan = await Bimbingan.findAll();
+        let filter = {};
+        if (req.query.mahasiswambkm) {
+            filter.mahasiswa_mbkm_id = req.query.mahasiswambkm;
+        }
+
+        const bimbingan = await Bimbingan.findAll({
+            where: filter
+        });
 
         // All processes finished successfully
         return res.status(200).json({
