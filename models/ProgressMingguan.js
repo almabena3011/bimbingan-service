@@ -27,6 +27,10 @@ module.exports = (sequelize) => {
                 allowNull: false,
                 defaultValue: false
             },
+            feedback_laporan: {
+                type: DataTypes.TEXT,
+                allowNull: true,
+            },
             startWeek: {
                 type: DataTypes.DATE,
                 allowNull: false,
